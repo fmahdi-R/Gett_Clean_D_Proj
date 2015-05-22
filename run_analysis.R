@@ -3,6 +3,10 @@ library(dplyr)
 library(stringr)
 library(tidyr)
 ## Read in the data from local dir - downloaded data in order not to redownload, unzip
+
+myurl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+download.file(myurl,"Dataset.zip", "curl")
+unzip("Dataset.zip",exdir = "~/coursera/DS03_Getting_Cleaning_Data/Project/Course_Proj")
 setwd("../UCI HAR Dataset")
 # Read Test Data
 test_measure <- read.table("./test/X_test.txt")
@@ -42,14 +46,8 @@ my_act_labels <- read.table("activity_labels.txt")
 df_tbl_ds <- mutate(df_tbl_ds,named_activity = my_act_labels[Activity,2])
 
 ## Appropriately labels the data set with descriptive variable names. 
-# NOTE: This step was done on line 27 - 34 where the V1, V2, VX were replaced by proper Var names. As for making 
+# NOTE: This step was done on line 31 - 37 where the V1, V2, VX were replaced by proper Var names. 
 #   
-#   I Believe that the form 
-#   tBodyAcc*
-#   t = Time
-#   Body = Body's acceleration signal
-#   Acc = Acceleration
-#       etc is descriptive enough. I shall add that to my code book
 ## From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 tidy_data <- df_tbl_ds %>% select(Subject,named_activity,3:length(names(df_tbl_ds))) %>%
@@ -59,4 +57,4 @@ tidy_data <- df_tbl_ds %>% select(Subject,named_activity,3:length(names(df_tbl_d
     group_by(Subject,Activity,Measurement) %>% 
     summarise(mean(value)) %>% spread(Measurement, "mean(value)")
 
-write.table(tidy_data,file = "tidy_data.txt",row.name=FALSE)
+write.table(tidy_data,file = "../tidy_data.txt",row.name=FALSE)
