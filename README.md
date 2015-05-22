@@ -12,3 +12,8 @@ then goes through a list of transformations :
   - From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 Then writes a data.table file named tidy_data.txt
+
+This Repo also contains a CodeBook.md file describing:
+- decisions made
+- transformations, and 
+- the resulting tidy data columns.
