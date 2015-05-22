@@ -44,23 +44,3 @@ The transformations completed were the following:
    7. Finally, the data was then spread back to a wider table, whereby each measurement variable is in its own column.
 
 =======
-# Gett_Clean_D_Proj
-Getting and Clearning Data Course Project
-
-This Repo contains one script run_analysis.R  which gets & cleans data from :
-https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
-
-then goes through a list of transformations :
-  - Merges the training and the test sets to create one data set.
-  - Extracts only the measurements on the mean and standard deviation for each measurement. 
-  - Uses descriptive activity names to name the activities in the data set
-  - Appropriately labels the data set with descriptive variable names. 
-  - From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-
-Then writes a data.table file named tidy_data.txt
-
-This Repo also contains a CodeBook.md file describing:
-- decisions made
-- transformations, and 
-- the resulting tidy data columns.
->>>>>>> eac2b7dc894e0f26c755540040ba12f3bceaa0a2
